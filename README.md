@@ -82,6 +82,27 @@ python main.py --model gcn_vae --dataset cora --cluster 7
 ```
 
 This will train the VGAER model on the Cora dataset with 7 communities.
+4. Để custom đối với đồ thị mới: 
+   * Sử dụng đồ thị khác trong hàm này: `from dgl.data import CoraGraphDataset, CiteseerGraphDataset , PubmedGraphDataset`
+   * Custom thêm đồ thị trong hàm `vgaer` trong file `train_vgaer.py` - như là các custom dataset họ để trong thư mục `dataset`:
+   ```python
+   G = nx.read_gml('dataset/netscience/netscience.gml', label='id')
+    A = torch.Tensor(nx.adjacency_matrix(G).todense())
+    A_orig = A.detach().numpy()
+    A_orig_ten = A
+    A_orig_ten = A_orig_ten.to(device)
+
+    columns = ['Source', 'Target']
+    data = pd.read_csv('data/lastfm_asia/lastfm_asia_edges.csv', names=columns, header=None)
+    G = nx.Graph()
+    data_len = len(data)
+    for i in range(data_len):
+        G.add_edge(data.iloc[i]['Source'], data.iloc[i]['Target'])
+
+    A = torch.Tensor(nx.adjacency_matrix(G).todense())
+    A_orig = A.detach().numpy()
+    A_orig_ten = A.to(device)
+   ```
 
 ## Code Structure
 
