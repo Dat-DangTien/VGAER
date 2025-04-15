@@ -83,7 +83,7 @@ python main.py --model gcn_vae --dataset cora --cluster 7
 
 This will train the VGAER model on the Cora dataset with 7 communities.
 4. Để custom đối với đồ thị mới: 
-   * Sử dụng đồ thị khác trong hàm này: `from dgl.data import CoraGraphDataset, CiteseerGraphDataset , PubmedGraphDataset`
+   * Sử dụng đồ thị khác trong package `dgl.data`, ví dụ như trong code thuần, họ sử dụng được 3 bộ như sau: `from dgl.data import CoraGraphDataset, CiteseerGraphDataset , PubmedGraphDataset`, vậy nên ta có thể sử dụng các bộ khác từ `dgl.data` đó
    * Custom thêm đồ thị trong hàm `vgaer` trong file `train_vgaer.py` - như là các custom dataset họ để trong thư mục `dataset`:
    ```python
    G = nx.read_gml('dataset/netscience/netscience.gml', label='id')
