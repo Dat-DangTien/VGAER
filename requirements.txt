@@ -1,4 +1,4 @@
-dgl==0.8.0.post1
+dgl
 matplotlib==3.5.1
 networkx==2.7.1
 numpy==1.22.3

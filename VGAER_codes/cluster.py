@@ -48,5 +48,5 @@ def community (z1, clusters):
     plt.title("k-means")
     #plt.savefig('./cora{}.pdf'.format(i))
     plt.show()
-    print(i)
+    # print(i)
     return commu_predict

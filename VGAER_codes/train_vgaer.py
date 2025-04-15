@@ -30,13 +30,13 @@ from sklearn.manifold import TSNE
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='gcn_vae', help="models used")
 parser.add_argument('--seed', type=int, default=42, help='Random seed.')
-parser.add_argument('--epochs', type=int, default=10000, help='Number of epochs to train.')
+parser.add_argument('--epochs', type=int, default=100, help='Number of epochs to train.')
 parser.add_argument('--hidden1', type=int, default=8, help='Number of units in hidden layer 1.')
 parser.add_argument('--hidden2', type=int, default=2, help='Number of units in hidden layer 2.')
 parser.add_argument('--lr', type=float, default=0.05, help='Initial learning rate.')
 parser.add_argument('--dropout', type=float, default=0., help='Dropout rate (1 - keep probability).')
 parser.add_argument('--dataset', type=str, default='cora', help='type of dataset.')
-parser.add_argument('--cluster', type=str, default=7, help='Number of community')
+parser.add_argument('--cluster', type=int, default=7, help='Number of community')
 args = parser.parse_args()
 
 #Check device
@@ -147,6 +147,7 @@ def vgaer():
         loss.backward()
         optimizer.step()
         if epoch == args.epochs-1:
+            print("hello")
             hidemb = hidemb.cpu()
             #torch.save(hidemb, './z.pt')
             # NMI_count=[]
@@ -165,7 +166,7 @@ def vgaer():
             # plt.show()
             #feats = feats.cpu()
             Q(A_orig, np.eye(args.cluster)[commu_pred])
-            print(Q_NUMBER)
+            # print(Q_NUMBER)
             nmi = NMI(commu_pred, label_orig)
             #x_num.append(epoch)
             #y_num.append(nmi * 100)

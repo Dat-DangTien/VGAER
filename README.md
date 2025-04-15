@@ -1,45 +1,55 @@
-# Introduction
+# Readme - Dat
+# 🐍 Hướng dẫn cài đặt Conda và tạo môi trường ảo
 
-One of my colleagues asked me: "What's your most practical skill in network science?" I told him:" **community detection**"! ！
+## 1. Tải và cài đặt Miniconda
 
-Whether you are a network science beginner, enthusiast, or expert, whether you study network data or other data networking, community detection technology will be able to accompany you at every stage of network analysis --- **from Network Data Preprocessing and Analyse, Network Visualization, Network Advanced Insight Acquisition...**
+Miniconda là phiên bản nhẹ hơn của Anaconda, chỉ bao gồm `conda` và một số công cụ cơ bản. Phù hợp cho người dùng muốn kiểm soát môi trường tốt hơn.
 
-Community detection can be an organic part of your own models! The VGAER we developed provides an opportunity to combine cutting-edge GNN methods.
+### 🔗 Link tải Miniconda: [Link cài đặt official](https://www.anaconda.com/docs/getting-started/miniconda/install#)
+- [Miniconda cho Windows](https://youtu.be/AgnAs0nPEVg)
 
-**Come and try!**
+### ⚙️ Các bước cài đặt (Windows):
+1. Tải file `.exe` phù hợp với hệ điều hành.
+2. Chạy file cài đặt và chọn:
+   - ✅ Add Miniconda to `PATH` (khuyến nghị bật)
+   - ✅ Register Miniconda as the system's default Python
+3. Mở Terminal (`cmd`, `PowerShell` hoặc `Anaconda Prompt`).
 
+---
 
-# VGAER
-
-Simple and efficient -- a novel unsupervised community detection with the fusion of modularity and network structure:
-
-
-<img width="754" alt="1646717854(1)" src="https://user-images.githubusercontent.com/42266769/157173553-aa740d4e-12d5-413f-86d9-91cadc7916dc.png">
-
-# Get to Start--VGAER
-
-## Overview
-
-This repository contains the implementation of the VGAER (Variational Graph Auto-Encoder with Reinforcement learning) model. The model is designed to learn node representations in a graph and perform community detection. It uses a combination of graph neural networks and variational autoencoders to achieve this.
-
-## Requirements
-
-To run the code, You can install these packages using pip:
+## 2. Kiểm tra cài đặt Conda
 
 ```bash
-pip install -r requirements.txt
+conda --version
 ```
 
-## Installation
+## 3. Tạo môi trường mới
+`ten_moi_truong` thì do bản thân tự đặt (như đặt tên biến trong code Python)
+```bash
+conda create --name ten_moi_truong python=3.10
+```
 
-To use the VGAER model, clone the repository and navigate to the directory:
+## 4. Kích hoạt môi trường
+```bash
+conda activate ten_moi_truong
+```
+## 5. Cài đặt thêm gói vào môi trường
+```bash
+conda install ten_goi
+```
+Ví dụ:
 
 ```bash
-git clone https://github.com/your-repo/vgaer-model.git
-cd vgaer-model
+conda install matplotlib seaborn
+```
+Hoặc cài từ pip:
+
+```bash
+pip install scikit-learn
 ```
 
-## Usage
+
+## Chạy code của bản này
 
 ### Command-Line Arguments
 
@@ -57,9 +67,17 @@ The model can be configured using the following command-line arguments:
 
 ### Running the Model
 
-To run the model, use the following command:
-
+Để chạy code: 
+1. Donwload anaconda như trên
+2. Khởi tạo môi trường conda mới, đặt terminal tại vị trí thư mục `VGAER`
+2. Cài đặt những gì yêu cầu từ gói: 
 ```bash
+pip install -r requirements.txt
+```
+3. Để chạy thử
+```bash
+
+cd VGAER_codes 
 python main.py --model gcn_vae --dataset cora --cluster 7
 ```
 
@@ -73,25 +91,10 @@ This will train the VGAER model on the Cora dataset with 7 communities.
 - `Qvalue.py`: Contains the Q value calculation for community detection.
 - `main.py`: The main script that loads the dataset, trains the model, and performs community detection.
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-
-Contributions to the project are welcome. Please open an issue or submit a pull request with your proposed changes.
-
-## Acknowledgements
-
-This project was inspired by various research papers and open-source projects in the field of graph neural networks and community detection. We gratefully acknowledge their contributions to the field.
-
-We also thank the [willleeney/ugle](https://github.com/willleeney/ugle) project for referencing and integrating our VGAER model. We look forward to engaging with more open-source projects to jointly advance the development and application of technology.
-
 
 # Requirement
 
-dgl==0.8.0.post1
-
+dgl
 matplotlib==3.5.1
 
 networkx==2.7.1
